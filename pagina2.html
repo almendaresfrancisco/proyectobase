@@ -1,164 +1,391 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Descubriendo Nicaragua — Bitácora de campo</title>
-<style>
-  :root{
-    --papel:#EFE6D3;
-    --papel-2:#E5D8BC;
-    --tinta:#2B2420;
-    --lava:#C44A1F;
-    --lago:#1F6F6B;
-    --sello:#8C2F1E;
-    --linea: rgba(43,36,32,0.22);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descubriendo Nicaragua — Bitácora</title>
+  <style>
+    /* VARIABLES DE COLOR VINTAGE */
+    :root {
+      --papel: #EFE6D3;
+      --papel-hoja: #FDFBF7;
+      --tinta: #2B2420;
+      --lava: #C44A1F;
+      --lago: #1F6F6B;
+      --sello: #8C2F1E;
+      --linea: rgba(43, 36, 32, 0.15);
+    }
 
-  *{margin:0;padding:0;box-sizing:border-box;}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body{
-    background:var(--papel);
-    color:var(--tinta);
-    font-family:'Courier New', monospace;
-    min-height:100vh;
-    overflow-x:hidden;
-    background-image:
-      radial-gradient(circle at 20% 10%, rgba(43,36,32,0.04) 0, transparent 45%),
-      radial-gradient(circle at 80% 90%, rgba(43,36,32,0.04) 0, transparent 45%);
-  }
+    body {
+      background: var(--papel);
+      color: var(--tinta);
+      font-family: 'Courier New', monospace;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
 
-  /* textura de papel sutil */
-  body::before{
-    content:'';
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:0.5;
-    background-image:
-      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(43,36,32,0.012) 3px),
-      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(43,36,32,0.012) 3px);
-    z-index:1;
-  }
+    /* ---------- CABECERA ---------- */
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
 
-  /* ---------- HEADER ---------- */
-  header{
-    padding:60px 20px 30px;
-    text-align:center;
-    position:relative;
-    max-width:760px;
-    margin:0 auto;
-  }
+    header h1 {
+      font-family: Georgia, serif;
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
 
-  .eyebrow{
-    font-size:0.72rem;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:var(--sello);
-    margin-bottom:16px;
-    display:inline-block;
-    border:1px solid var(--sello);
-    border-radius:2px;
-    padding:4px 10px;
-    transform:rotate(-1.2deg);
-  }
+    header h1 span {
+      color: var(--lava);
+      font-style: italic;
+    }
 
-  header h1{
-    font-family:Georgia,'Times New Roman',serif;
-    font-weight:900;
-    font-size:clamp(2.4rem,6.5vw,4.4rem);
-    letter-spacing:0.5px;
-    color:var(--tinta);
-    line-height:1.0;
-    margin-bottom:18px;
-    text-transform:uppercase;
-  }
+    header p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
 
-  header h1 span{
-    color:var(--lava);
-    font-style:italic;
-    text-transform:none;
-  }
+    /* ---------- CONTENEDOR PRINCIPAL ---------- */
+    .bitacora {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 20px;
+      max-width: 800px;
+      width: 100%;
+    }
 
-  header p{
-    max-width:580px;
-    margin:0 auto;
-    font-size:0.92rem;
-    line-height:1.75;
-    color:rgba(43,36,32,0.72);
-  }
+    /* ---------- PANEL DE CONTROLES (IZQUIERDA) ---------- */
+    .panel-izquierdo {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-  .firma{
-    margin-top:22px;
-    font-family:Georgia,serif;
-    font-style:italic;
-    font-size:0.82rem;
-    color:rgba(43,36,32,0.5);
-  }
+    /* Termómetro */
+    .termometro {
+      background: rgba(43, 36, 32, 0.05);
+      border: 2px solid var(--tinta);
+      border-radius: 8px;
+      padding: 15px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  /* ---------- LAYOUT PRINCIPAL: termómetro + diario ---------- */
-  .bitacora{
-    max-width:1080px;
-    margin:50px auto 90px;
-    padding:0 20px;
-    display:grid;
-    grid-template-columns:90px 1fr;
-    gap:28px;
-    align-items:start;
-  }
+    .termometro-titulo {
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
 
-  /* ---------- TERMÓMETRO VOLCÁNICO ---------- */
-  .termometro{
-    position:sticky;
-    top:40px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding-top:20px;
-  }
+    .tubo {
+      width: 12px;
+      height: 150px;
+      background: rgba(43, 36, 32, 0.1);
+      border: 2px solid var(--tinta);
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+    }
 
-  .termometro .titulo-term{
-    font-size:0.6rem;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    color:rgba(43,36,32,0.5);
-    margin-bottom:14px;
-    text-align:center;
-    writing-mode:horizontal-tb;
-  }
+    .mercurio {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 0%; /* Cambia dinámicamente con CSS */
+      background: linear-gradient(to top, var(--sello), var(--lava));
+      transition: height 0.5s ease;
+    }
 
-  .tubo{
-    position:relative;
-    width:14px;
-    height:340px;
-    background:rgba(43,36,32,0.08);
-    border:1.5px solid var(--tinta);
-    border-radius:10px;
-    overflow:hidden;
-  }
+    .temperatura-texto {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--sello);
+      margin-top: 8px;
+    }
 
-  .tubo .mercurio{
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    background:linear-gradient(180deg, var(--lava), var(--sello));
-    border-radius:0 0 10px 10px;
-    transition:height .6s ease;
-  }
+    /* Botones de Selección */
+    .botones-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
-  .marcas{
-    position:absolute;
-    left:22px;
-    top:0;
-    height:340px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-  }
+    .btn-ciudad {
+      background: var(--papel);
+      color: var(--tinta);
+      border: 2px solid var(--tinta);
+      padding: 10px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: block;
+      text-align: center;
+      user-select: none;
+    }
 
-  .marca-btn{
-    background:none;
-    border:none;
-    cursor:pointer;
-    display:flex
+    .btn-ciudad:hover {
+      background: rgba(43, 36, 32, 0.1);
+    }
+
+    /* ---------- PÁGINA DEL DIARIO (DERECHA) ---------- */
+    .diario-hoja {
+      background: var(--papel-hoja);
+      border: 2px solid var(--tinta);
+      border-radius: 4px;
+      padding: 30px;
+      box-shadow: 5px 5px 0px rgba(43, 36, 32, 0.15);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .diario-hoja h2 {
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+    }
+
+    .diario-hoja h2 span {
+      display: block;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--lago);
+      font-weight: normal;
+      margin-top: 4px;
+    }
+
+    /* Polaroid */
+    .polaroid {
+      background: #FFFFFF;
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 10px 10px 30px 10px;
+      box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+      align-self: center;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border: 1px solid #EEE;
+    }
+
+    .diario-entrada {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    /* Actividades */
+    .actividades-seccion h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--tinta);
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      color: var(--sello);
+    }
+
+    .actividad-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .actividad-item input {
+      cursor: pointer;
+    }
+
+    /* DISEÑO RESPONSIVO (MÓVILES) */
+    @media (max-width: 650px) {
+      .bitacora {
+        grid-template-columns: 1fr;
+      }
+      .botones-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .btn-ciudad {
+        flex: 1;
+        text-align: center;
+      }
+    }
+
+    /* =======================================================
+       FUNCIONAMIENTO INTERACTIVO CON CSS PURO (SIN JS)
+       ======================================================= */
+    
+    /* 1. Destacar botón de la ciudad seleccionada */
+    #tab-granada:checked ~ .bitacora .tab-btn-granada,
+    #tab-leon:checked ~ .bitacora .tab-btn-leon,
+    #tab-ometepe:checked ~ .bitacora .tab-btn-ometepe,
+    #tab-san-juan:checked ~ .bitacora .tab-btn-san-juan {
+      background: var(--tinta);
+      color: var(--papel);
+    }
+
+    /* 2. Controlar la altura del mercurio del termómetro */
+    #tab-granada:checked ~ .bitacora #mercurio { height: 60%; }
+    #tab-leon:checked ~ .bitacora #mercurio { height: 95%; }
+    #tab-ometepe:checked ~ .bitacora #mercurio { height: 80%; }
+    #tab-san-juan:checked ~ .bitacora #mercurio { height: 45%; }
+
+    /* 3. Controlar el texto del termómetro */
+    #tab-granada:checked ~ .bitacora #grados::after { content: "60°C"; }
+    #tab-leon:checked ~ .bitacora #grados::after { content: "95°C"; }
+    #tab-ometepe:checked ~ .bitacora #grados::after { content: "80°C"; }
+    #tab-san-juan:checked ~ .bitacora #grados::after { content: "45°C"; }
+
+    /* 4. Mostrar solo la hoja de diario de la ciudad seleccionada */
+    .diario-hoja {
+      display: none;
+    }
+    #tab-granada:checked ~ .bitacora #hoja-granada,
+    #tab-leon:checked ~ .bitacora #hoja-leon,
+    #tab-ometepe:checked ~ .bitacora #hoja-ometepe,
+    #tab-san-juan:checked ~ .bitacora #hoja-san-juan {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Inputs invisibles para controlar las pestañas por CSS -->
+  <input type="radio" name="ciudad-tab" id="tab-granada" checked style="display:none;">
+  <input type="radio" name="ciudad-tab" id="tab-leon" style="display:none;">
+  <input type="radio" name="ciudad-tab" id="tab-ometepe" style="display:none;">
+  <input type="radio" name="ciudad-tab" id="tab-san-juan" style="display:none;">
+
+  <!-- CABECERA -->
+  <header>
+    <h1>Bitácora de <span>Nicaragua</span></h1>
+    <p>Guía de viaje interactiva para principiantes</p>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div class="bitacora">
+
+    <!-- MENÚ E INDICADORES (IZQUIERDA) -->
+    <div class="panel-izquierdo">
+      
+      <!-- Termómetro -->
+      <div class="termometro">
+        <span class="termometro-titulo">Aventura</span>
+        <div class="tubo">
+          <div class="mercurio" id="mercurio"></div>
+        </div>
+        <span class="temperatura-texto" id="grados"></span>
+      </div>
+
+      <!-- Botones de Ciudades (ahora son etiquetas vinculadas al input) -->
+      <div class="botones-menu">
+        <label for="tab-granada" class="btn-ciudad tab-btn-granada">Granada</label>
+        <label for="tab-leon" class="btn-ciudad tab-btn-leon">León</label>
+        <label for="tab-ometepe" class="btn-ciudad tab-btn-ometepe">Ometepe</label>
+        <label for="tab-san-juan" class="btn-ciudad tab-btn-san-juan">San Juan</label>
+      </div>
+
+    </div>
+
+    <!-- PÁGINAS DEL DIARIO (DERECHA) -->
+    
+    <!-- HOJA 1: GRANADA -->
+    <div class="diario-hoja" id="hoja-granada">
+      <h2>Granada <span>La Gran Sultana</span></h2>
+      <div class="polaroid">
+        <img src="https://i.postimg.cc/FRSfGybN/granada.jpg" alt="Granada">
+      </div>
+      <p class="diario-entrada">
+        Granada es una joya colonial a las orillas del Gran Lago de Nicaragua. Destaca por sus calles empedradas, iglesias históricas y hermosas fachadas de colores pasteles. Aquí podrás navegar entre más de 360 isletas creadas por el volcán Mombacho.
+      </p>
+      <div class="actividades-seccion">
+        <h3>¿Qué hacer en este lugar?</h3>
+        <div>
+          <label class="actividad-item"><input type="checkbox"> <span>Hacer un recorrido en lancha por las Isletas.</span></label>
+          <label class="actividad-item"><input type="checkbox"> <span>Subir a la torre de la iglesia La Merced.</span></label>
+          <label class="actividad-item"><input type="checkbox"> <span>Explorar el bosque nebliselva del volcán Mombacho.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOJA 2: LEÓN -->
+    <div class="diario-hoja" id="hoja-leon">
+      <h2>León <span>Tierra de Fuego y Poesía</span></h2>
+      <div class="polaroid">
+        <img src="https://i.postimg.cc/02P6dJbT/leon.jpg" alt="León">
+      </div>
+      <p class="diario-entrada">
+        León es una ciudad vibrante con una gran historia revolucionaria y artística. Es famosa por su enorme Catedral blanca sobre la que puedes caminar descalzo, y por el Cerro Negro, un volcán activo ideal para deslizarse en tabla.
+      </p>
+      <div class="actividades-seccion">
+        <h3>¿Qué hacer en este lugar?</h3>
+        <div>
+          <label class="actividad-item"><input type="checkbox"> <span>Hacer Volcano Boarding en el Cerro Negro.</span></label>
+          <label class="actividad-item"><input type="checkbox"> <span>Caminar sobre las cúpulas blancas de la Catedral.</span></label>
+          <label class="actividad-item"><input type="checkbox"> <span>Conocer las históricas ruinas de León Viejo.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOJA 3: OMETEPE -->
+    <div class="diario-hoja" id="hoja-ometepe">
+      <h2>Isla de Ometepe <span>Oasis de Paz</span></h2>
+      <div class="polaroid">
+        <img src="https://i.postimg.cc/Wz6dcsHv/ometepe.jpg" alt="Isla de Ometepe">
+      </div>
+      <p class="diario-entrada">
+        Ometepe es una isla en el Lago de Nicaragua con forma de infinito, formada por dos grandes colosos: el volcán Concepción y el volcán Maderas. Es un paraíso de naturaleza exuberante, agua pura, mitos y petroglifos antiguos.
+      </p>
+      <div class="actividades-seccion">
+        <h3>¿Qué hacer en este lugar?</h3>
+        <div>
+          <label class="actividad-item"><input type="checkbox"> <span>Nadar en la piscina natural cristalina de Ojo de Agua.</span></label>
+          <label class="actividad-item"><input type="checkbox"> <span>Hacer senderismo en los volcanes Concepción o Maderas.</span></label>
+          <label class="actividad-item"><input type="checkbox"> <span>Buscar petroglifos indígenas tallados en piedra.</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOJA 4: SAN JUAN DEL SUR -->
+    <div class="diario-hoja" id="hoja-san-juan">
+      <h2>San Juan del Sur <span>El Paraíso del Surf</span></h2>
+      <div class="polaroid">
+        <img src="https://i.ibb.co/JjwhZ3Xz/download.jpg" alt="San Juan del Sur">
+      </div>
+      <p class="diario-entrada">
+        San Juan del Sur es una hermosa bahía rodeada de acantilados en el Océano Pacífico. Se destaca por sus increíbles atardeceres y por ser el centro de la cultura del surf en el país, con playas perfectas a pocos minutos del pueblo.
+      </p>
+      <div class="actividades-seccion">
+        <h3>¿Qué hacer en este lugar?</h3>
+        <div>
+          <label class="actividad-item"><input type="checkbox"> <span>Subir al mirador del Cristo de la Misericordia.</span></label>
+          <label class="actividad-item"><input type="checkbox"> <span>Aprender a surfear en Playa Maderas.</span></label>
+          <label class="actividad-item"><input type="checkbox"> <span>Relajarse frente al mar comiendo tostones con queso.</span></label>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
