@@ -4,46 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rutas de Nicaragua · Proyecto de Programación</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --ink:#211B16;
-      --cream:#F5EEDF;
-      --paper:#FBF7EE;
-      --ochre:#E2A33E;   /* León */
-      --terracotta:#A23E2E; /* Granada */
-      --teal:#2C6B6E;    /* Ometepe */
-      --coral:#D9576B;   /* San Juan del Sur */
-      --line: rgba(33,27,22,0.16);
-      --shadow: 0 14px 30px rgba(33,27,22,0.10);
-    }
+</head>
+<body style="background-color: #F5EEDF; color: #211B16; font-family: sans-serif; padding: 20px;">
 
-    *{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{
-      margin:0;
-      background:var(--cream);
-      color:var(--ink);
-      font-family:'Inter',Arial,sans-serif;
-      -webkit-font-smoothing:antialiased;
-    }
-    h1,h2,h3{
-      font-family:'Fraunces',serif;
-      font-weight:700;
-      margin:0;
-      letter-spacing:-0.01em;
-    }
-    a{color:inherit;}
-    ::selection{background:var(--ochre); color:var(--ink);}
-    :focus-visible{outline:3px solid var(--terracotta); outline-offset:3px;}
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto;}
-      *{transition:none !important; animation:none !important;}
-    }
+  <table width="100%" bgcolor="#211B16" style="color: #FBF7EE; padding: 10px;">
+    <tr>
+      <td><strong>Rutas de Nicaragua</strong></td>
+      <td align="right">
+        <a href="#inicio" style="color: #FBF7EE; text-decoration: none; margin-right: 15px;">Inicio</a>
+        <a href="#destinos" style="color: #FBF7EE; text-decoration: none;">Destinos</a>
+      </td>
+    </tr>
+  </table>
 
-    /* ---------- NAV ---------- */
-    nav{
-      background:var(--ink);
-      position:
+  <center id="inicio" style="margin-top: 40px; margin-bottom: 40px;">
+    <h1>Bienvenidos a las Rutas de Nicaragua</h1>
+    <p>Un proyecto escolar para conocer los lugares más bellos de nuestro país.</p>
+  </center>
+
+  <hr>
+
+  <div id="destinos" style="max-width: 800px; margin: 0 auto;">
+    
+    <h2>Nuestros Destinos</h2>
+    <p>Explora cada una de las rutas disponibles:</p>
+
+    <div style="background-color: #FBF7EE; padding: 15px; margin-bottom: 20px; border-top: 4px solid #E2A33E;">
+      <h3>1. Ruta de León</h3>
+      <p>Ciudad histórica con hermosas iglesias coloniales y el famoso volcán Cerro Negro.</p>
+      <a href="#" style="color: #E2A33E; font-weight: bold;">Ver más información</a>
+    </div>
+
+    <div style="background-color: #FBF7EE; padding: 15px; margin-bottom: 20px; border-top: 4px solid #A23E2E;">
+      <h3>2. Ruta de Granada</h3>
+      <p>La Gran Sultana, conocida por su arquitectura colorida y las bellas isletas en el lago.</p>
+      <a href="#" style="color: #A23E2E; font-weight: bold;">Ver más información</a>
+    </div>
+
+    <div style="background-color: #FBF7EE; padding: 15px; margin-bottom: 20px; border-top: 4px solid #2C6B6E;">
+      <h3>3. Ruta de Ometepe</h3>
+      <p>Una isla única en el mundo formada por dos imponentes volcanes en medio del agua.</p>
+      <a href="#" style="color: #2C6B6E; font-weight: bold;">Ver más información</a>
+    </div>
+
+    <div style="background-color: #FBF7EE; padding: 15px; margin-bottom: 20px; border-top: 4px solid #D9576B;">
+      <h3>4. Ruta de San Juan del Sur</h3>
+      <p>La bahía turística por excelencia, famosa por sus playas perfectas para el surf y sus atardeceres.</p>
+      <a href="#" style="color: #D9576B; font-weight: bold;">Ver más información</a>
+    </div>
+
+  </div>
+
+  <hr>
+
+  <center style="margin-top: 30px; padding: 10px; font-size: 14px;">
+    <p>&copy; 2026 - Proyecto de Programación Web</p>
+  </center>
+
+</body>
+</html>
