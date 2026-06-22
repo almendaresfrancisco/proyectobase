@@ -1,65 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rutas de Nicaragua · Proyecto de Programación</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nicaragua Turismo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Poppins',sans-serif;background:#f5f7fa;color:#333}
+nav{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:15px;text-align:center;position:sticky;top:0;z-index:99;box-shadow:0 4px 15px rgba(0,0,0,0.2)}
+nav a{color:white;text-decoration:none;margin:0 15px;font-weight:600;transition:0.3s;display:inline-block}
+nav a:hover{color:#ffd700;transform:scale(1.1)}
+header{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;padding:50px 20px;text-align:center}
+header h1{font-size:2.5em;margin-bottom:8px}
+section{max-width:1000px;margin:35px auto;padding:30px;background:white;border-radius:10px;box-shadow:0 6px 25px rgba(0,0,0,0.1)}
+section h2{color:#667eea;margin-bottom:20px;font-size:2em;text-align:center}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.card{background:linear-gradient(135deg,#f5f7fa 0%,#c3cfe2 100%);padding:30px 20px;border-radius:10px;border-left:5px solid #667eea;transition:all 0.3s;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.08);display:flex;flex-direction:column;justify-content:center}
+.card:hover{transform:translateY(-6px);box-shadow:0 10px 25px rgba(102,126,234,0.25)}
+.card h3{color:#333;font-size:1.5em;margin-bottom:15px}
+.precio{font-weight:700;color:#764ba2;background:rgba(118,75,162,0.15);padding:12px;border-radius:6px;font-size:1.2em;display:inline-block;width:100%}
+.team-card{text-align:center;color:white;padding:25px;border-radius:10px;transition:0.3s;display:flex;flex-direction:column;justify-content:center;min-height:150px}
+.team-card:hover{transform:scale(1.05)}
+.team-card h3{font-size:1.5em;margin-bottom:5px}
+.team-card1{background:linear-gradient(135deg,#667eea,#764ba2)}
+.team-card2{background:linear-gradient(135deg,#f093fb,#f5576c)}
+footer{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;text-align:center;padding:20px;margin-top:30px}
+</style>
 </head>
-<body style="background-color: #F5EEDF; color: #211B16; font-family: sans-serif; padding: 20px;">
-
-  <table width="100%" bgcolor="#211B16" style="color: #FBF7EE; padding: 10px;">
-    <tr>
-      <td><strong>Rutas de Nicaragua</strong></td>
-      <td align="right">
-        <a href="#inicio" style="color: #FBF7EE; text-decoration: none; margin-right: 15px;">Inicio</a>
-        <a href="#destinos" style="color: #FBF7EE; text-decoration: none;">Destinos</a>
-      </td>
-    </tr>
-  </table>
-
-  <center id="inicio" style="margin-top: 40px; margin-bottom: 40px;">
-    <h1>Bienvenidos a las Rutas de Nicaragua</h1>
-    <p>Un proyecto escolar para conocer los lugares más bellos de nuestro país.</p>
-  </center>
-
-  <hr>
-
-  <div id="destinos" style="max-width: 800px; margin: 0 auto;">
-    
-    <h2>Nuestros Destinos</h2>
-    <p>Explora cada una de las rutas disponibles:</p>
-
-    <div style="background-color: #FBF7EE; padding: 15px; margin-bottom: 20px; border-top: 4px solid #E2A33E;">
-      <h3>1. Ruta de León</h3>
-      <p>Ciudad histórica con hermosas iglesias coloniales y el famoso volcán Cerro Negro.</p>
-      <a href="#" style="color: #E2A33E; font-weight: bold;">Ver más información</a>
-    </div>
-
-    <div style="background-color: #FBF7EE; padding: 15px; margin-bottom: 20px; border-top: 4px solid #A23E2E;">
-      <h3>2. Ruta de Granada</h3>
-      <p>La Gran Sultana, conocida por su arquitectura colorida y las bellas isletas en el lago.</p>
-      <a href="#" style="color: #A23E2E; font-weight: bold;">Ver más información</a>
-    </div>
-
-    <div style="background-color: #FBF7EE; padding: 15px; margin-bottom: 20px; border-top: 4px solid #2C6B6E;">
-      <h3>3. Ruta de Ometepe</h3>
-      <p>Una isla única en el mundo formada por dos imponentes volcanes en medio del agua.</p>
-      <a href="#" style="color: #2C6B6E; font-weight: bold;">Ver más información</a>
-    </div>
-
-    <div style="background-color: #FBF7EE; padding: 15px; margin-bottom: 20px; border-top: 4px solid #D9576B;">
-      <h3>4. Ruta de San Juan del Sur</h3>
-      <p>La bahía turística por excelencia, famosa por sus playas perfectas para el surf y sus atardeceres.</p>
-      <a href="#" style="color: #D9576B; font-weight: bold;">Ver más información</a>
-    </div>
-
-  </div>
-
-  <hr>
-
-  <center style="margin-top: 30px; padding: 10px; font-size: 14px;">
-    <p>&copy; 2026 - Proyecto de Programación Web</p>
-  </center>
-
+<body>
+<nav>
+<a href="#inicio">🏠 Inicio</a>
+<a href="#proyecto">📋 Proyecto</a>
+<a href="#equipo">👥 Equipo</a>
+<a href="#destinos">🌍 Destinos</a>
+</nav>
+<header id="inicio">
+<h1>🌎 Rutas de Nicaragua</h1>
+<p>Descubre 4 destinos increíbles</p>
+</header>
+<section id="proyecto">
+<h2>Sobre el Proyecto</h2>
+<p style="text-align:justify;line-height:1.7;color:#555;margin-bottom:15px">Esta plataforma web es un proyecto académico de Ingeniería de Sistemas diseñado de forma práctica y directa. Nuestro propósito principal es facilitar la planificación de viajes por Nicaragua mediante un portal interactivo que reúne las tarifas de hospedaje por noche en los destinos turísticos más representativos del país, desde ciudades coloniales hasta zonas costeras y volcánicas.</p>
+<p style="text-align:justify;line-height:1.7;color:#555">Con un código estructurado exclusivamente en HTML y CSS, nos hemos enfocado en que la página sea rápida, fácil de navegar y visualmente atractiva sin depender de elementos pesados. La meta de este diseño es fomentar el turismo, dándole a cualquier viajero nacional o extranjero exactamente la información esencial que necesita para calcular su presupuesto sin complicaciones ni rodeos.</p>
+</section>
+<section id="equipo">
+<h2>Nuestro Equipo</h2>
+<div class="grid">
+<div class="team-card team-card1">
+<h3>Francisco Almendares</h3>
+<p>Página Principal</p>
+</div>
+<div class="team-card team-card2">
+<h3>Diego Medina</h3>
+<p>Páginas Secundarias</p>
+</div>
+</div>
+</section>
+<section id="destinos">
+<h2>Destinos Turísticos</h2>
+<div class="grid">
+<div class="card">
+<h3>🏛️ León</h3>
+<div class="precio">💵 $12 – $60 / noche</div>
+</div>
+<div class="card" style="border-left-color:#f5576c">
+<h3>🏰 Granada</h3>
+<div class="precio">💵 $15 – $90 / noche</div>
+</div>
+<div class="card" style="border-left-color:#ffd700">
+<h3>🌋 Isla Ometepe</h3>
+<div class="precio">💵 $10 – $80 / noche</div>
+</div>
+<div class="card" style="border-left-color:#00c896">
+<h3>🏄 San Juan del Sur</h3>
+<div class="precio">💵 $15 – $120 / noche</div>
+</div>
+</div>
+<p style="text-align:center;color:#888;margin-top:20px;font-size:0.9em">📌 Precios en USD, aproximados según temporada</p>
+</section>
+<footer>
+<p><strong>© 2026 Rutas de Nicaragua</strong></p>
+<p>Proyecto Académico | Francisco Almendares & Diego Medina</p>
+</footer>
 </body>
 </html>
